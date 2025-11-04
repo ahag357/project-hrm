@@ -1,0 +1,138 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Mazer</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/vendors/iconly/bold.css" />
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
+
+    <style>
+      html, body { height: 100%; }
+      #main { min-height: 100vh; display: flex; flex-direction: column; }
+      #content { flex: 1 0 auto; }
+      footer.site-footer { margin-top: auto; padding-bottom: env(safe-area-inset-bottom); }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <!-- ONE server form, no scripts inside -->
+    <form id="form1" runat="server" enctype="multipart/form-data">
+        <div id="app">
+            <div id="sidebar" class="active">
+                <div class="sidebar-wrapper active">
+                    <div class="sidebar-header">
+                        <div class="d-flex justify-content-between">
+                            <div class="logo">
+                                <a href="Dashboard.aspx">
+                                    <img src="assets/images/logo/logo.png" alt="Logo" />
+                                </a>
+                            </div>
+                            <div class="toggler">
+                                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-menu">
+                        <ul class="menu">
+                            <li class="sidebar-item active">
+                                <a href="Dashboard.aspx" class='sidebar-link'>
+                                    <i class="bi bi-grid-fill"></i><span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class='sidebar-link'><i class="bi bi-stack"></i><span>Employee</span></a>
+                                <ul class="submenu">
+                                    <li class="submenu-item"><a href="component-alert.html">New Employee</a></li>
+                                    <li class="submenu-item"><a href="component-badge.html">View Employee</a></li>
+                                    <li class="submenu-item"><a href="component-breadcrumb.html">Resignation</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class='sidebar-link'><i class="bi bi-collection-fill"></i><span>PayRoll</span></a>
+                                <ul class="submenu">
+                                    <li class="submenu-item"><a href="extra-component-toastify.html">Generate PayRoll</a></li>
+                                    <li class="submenu-item"><a href="extra-component-sweetalert.html">Deduction</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class='sidebar-link'><i class="bi bi-grid-1x2-fill"></i><span>Leave Management</span></a>
+                                <ul class="submenu">
+                                    <li class="submenu-item"><a href="layout-default.html">Leave Request</a></li>
+                                    <li class="submenu-item"><a href="layout-vertical-1-column.html">Manage Leaves</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class='sidebar-link'><i class="bi bi-hexagon-fill"></i><span>Setting</span></a>
+                                <ul class="submenu">
+                                    <li class="submenu-item"><a href="form-element-input.html">Configuration</a></li>
+                                    <li class="submenu-item"><a href="BasicSetting.aspx">Basic Setting</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="sidebar-item has-sub">
+                                <a href="#" class='sidebar-link'><i class="bi bi-pen-fill"></i><span>Reports</span></a>
+                                <ul class="submenu">
+                                    <li class="submenu-item"><a href="form-editor-quill.html">Quill</a></li>
+                                    <li class="submenu-item"><a href="form-editor-ckeditor.html">CKEditor</a></li>
+                                    <li class="submenu-item"><a href="form-editor-summernote.html">Summernote</a></li>
+                                    <li class="submenu-item"><a href="form-editor-tinymce.html">TinyMCE</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+                </div>
+            </div>
+
+            <div id="main">
+                <header class="mb-3">
+                    <a href="#" class="burger-btn d-block d-xl-none"><i class="bi bi-justify fs-3"></i></a>
+                </header>
+
+                <div id="content">
+                    <!-- IMPORTANT: paired closing tag -->
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+                </div>
+
+                <footer class="site-footer">
+                    <div class="footer clearfix mb-0 text-muted">
+                        <div class="float-start"><p>2021 &copy; Mazer</p></div>
+                        <div class="float-end">
+                            <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span>
+                               by <a href="http://ahmadsaugi.com">A. Saugi</a></p>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </form>
+
+    <!-- Keep toast + scripts OUTSIDE the server form -->
+    <div id="toast-stack" class="position-fixed top-0 end-0 p-3" style="z-index:1080; pointer-events:none;"></div>
+
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script type="text/javascript">
+    </script>
+</body>
+</html>
